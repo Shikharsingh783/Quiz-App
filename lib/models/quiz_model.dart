@@ -1,15 +1,15 @@
 class Quiz {
   final int id;
   final String title;
-  final String topic;
-  final String description;
+  String topic;
+  String description;
   final bool isPublished;
   final String difficultyLevel;
   final int duration;
-  final double correctAnswerMarks;
-  final double negativeMarks;
-  final bool shuffle;
-  final bool showAnswers;
+  final double
+      correctAnswerMarks; // Can stay as double to represent decimal points if necessary
+  final double
+      negativeMarks; // Can stay as double to represent decimal points if necessary
   final List<Question> questions;
 
   Quiz({
@@ -22,8 +22,6 @@ class Quiz {
     required this.duration,
     required this.correctAnswerMarks,
     required this.negativeMarks,
-    required this.shuffle,
-    required this.showAnswers,
     required this.questions,
   });
 
@@ -31,18 +29,21 @@ class Quiz {
   factory Quiz.fromJson(Map<String, dynamic> json) {
     return Quiz(
       id: json['id'],
-      title: json['title'],
-      topic: json['topic'],
+      title: json['title'] ?? 'Untitled',
+      topic: json['topic'] ?? 'No Topic Available',
       description: json['description'] ?? '',
-      isPublished: json['isPublished'],
+      isPublished: json['isPublished'] ?? false,
       difficultyLevel: json['difficultyLevel'] ?? 'Medium',
-      duration: json['duration'],
-      correctAnswerMarks: (json['correctAnswerMarks'] as num).toDouble(),
-      negativeMarks: (json['negativeMarks'] as num).toDouble(),
-      shuffle: json['shuffle'],
-      showAnswers: json['showAnswers'],
-      questions:
-          (json['questions'] as List).map((q) => Question.fromJson(q)).toList(),
+      duration: json['duration'] ?? 0,
+      correctAnswerMarks:
+          double.tryParse(json['correct_answer_marks'] ?? '0') ??
+              0.0, // Convert from String to double
+      negativeMarks: double.tryParse(json['negative_marks'] ?? '0') ??
+          0.0, // Convert from String to double
+      questions: (json['questions'] as List?)
+              ?.map((q) => Question.fromJson(q))
+              .toList() ??
+          [],
     );
   }
 
@@ -58,8 +59,6 @@ class Quiz {
       'duration': duration,
       'correctAnswerMarks': correctAnswerMarks,
       'negativeMarks': negativeMarks,
-      'shuffle': shuffle,
-      'showAnswers': showAnswers,
       'questions': questions.map((q) => q.toJson()).toList(),
     };
   }
@@ -82,10 +81,11 @@ class Question {
   factory Question.fromJson(Map<String, dynamic> json) {
     return Question(
       id: json['id'],
-      description: json['description'],
-      detailedSolution: json['detailedSolution'],
+      description: json['description'] ?? 'No Description',
+      detailedSolution: json['detailedSolution'] ?? 'No Solution Available',
       options:
-          (json['options'] as List).map((o) => Option.fromJson(o)).toList(),
+          (json['options'] as List?)?.map((o) => Option.fromJson(o)).toList() ??
+              [],
     );
   }
 
@@ -115,8 +115,8 @@ class Option {
   factory Option.fromJson(Map<String, dynamic> json) {
     return Option(
       id: json['id'],
-      description: json['description'],
-      isCorrect: json['isCorrect'],
+      description: json['description'] ?? 'No Description',
+      isCorrect: json['isCorrect'] ?? false,
     );
   }
 
