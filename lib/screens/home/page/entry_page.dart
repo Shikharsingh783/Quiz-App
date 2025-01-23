@@ -48,13 +48,13 @@ class _EntryPageState extends State<EntryPage> {
               right: 40,
               child: Image.asset('asset/trophy.png', height: 180)),
           Positioned(
-            bottom: 200,
+            bottom: 180,
             left: 32,
             child: SizedBox(
               width: 380,
               child: Text(
                 "Play the Quiz to earn points, improve your skills, and unlock new levels and exciting challenges! Compete with friends, achieve milestones, and become a quiz master with every step you take!",
-                style: GoogleFonts.wireOne(
+                style: GoogleFonts.homenaje(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                     color: Colors.grey),
@@ -70,7 +70,7 @@ class _EntryPageState extends State<EntryPage> {
               )),
           Positioned(
               left: 100,
-              bottom: 100,
+              bottom: 85,
               child: Button(
                 onTap: () {
                   Navigator.pushReplacement(

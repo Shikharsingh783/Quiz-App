@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz/components/question_page.dart';
 import 'package:quiz/screens/home/bloc/home_bloc.dart';
 import 'package:quiz/screens/home/page/entry_page.dart';
 import 'package:quiz/screens/home/page/home_page.dart';
+import 'package:quiz/screens/questions/page/question_view.dart';
 import 'package:quiz/services/quiz_service.dart';
 import 'package:quiz/utils/const.dart';
 
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: EntryPage(),
+        home: QuestionPage(),
       ),
     );
   }
