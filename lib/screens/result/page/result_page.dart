@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz/models/quiz_model.dart';
 import 'package:quiz/screens/home/bloc/home_bloc.dart';
 import 'package:quiz/screens/home/bloc/home_state.dart';
 import 'package:quiz/screens/home/page/home_page.dart';
@@ -29,7 +28,7 @@ class _ResultPageState extends State<ResultPage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color.fromRGBO(234, 228, 219, 1),
+                  Color.fromRGBO(234, 228, 219, 2),
                   // Color.fromRGBO(238, 235, 229, 1),
                   Colors.white,
                 ],
