@@ -116,7 +116,7 @@ class Option {
     return Option(
       id: json['id'],
       description: json['description'] ?? 'No Description',
-      isCorrect: json['isCorrect'] ?? false,
+      isCorrect: json['is_correct'] ?? false,
     );
   }
 

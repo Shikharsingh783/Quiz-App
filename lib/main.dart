@@ -4,6 +4,7 @@ import 'package:quiz/components/question_page.dart';
 import 'package:quiz/screens/home/bloc/home_bloc.dart';
 import 'package:quiz/screens/home/page/entry_page.dart';
 import 'package:quiz/screens/home/page/home_page.dart';
+import 'package:quiz/screens/questions/bloc/question_bloc.dart';
 import 'package:quiz/screens/questions/page/question_view.dart';
 import 'package:quiz/services/quiz_service.dart';
 import 'package:quiz/utils/const.dart';
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
             quizService: QuizService(baseUrl: baseUrl),
           ),
         ),
+
+        BlocProvider(create: (context) => QuestionBloc(),)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: QuestionPage(),
+        home: EntryPage(),
       ),
     );
   }

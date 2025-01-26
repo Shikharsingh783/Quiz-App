@@ -5,6 +5,7 @@ import 'package:quiz/components/button.dart';
 import 'package:quiz/screens/home/bloc/home_bloc.dart';
 import 'package:quiz/screens/home/bloc/home_event.dart';
 import 'package:quiz/screens/home/bloc/home_state.dart';
+import 'package:quiz/screens/questions/page/question_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -275,9 +276,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const Spacer(),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(bottom: 30),
-                      child: Button(text: 'Start quiz'),
+                      child: Button(text: 'Start quiz',onTap: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>QuestionView()));
+                      },),
                     )
                   ],
                 ),
